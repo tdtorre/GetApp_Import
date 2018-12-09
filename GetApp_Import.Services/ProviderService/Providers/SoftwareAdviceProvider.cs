@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using GetApp_Import.Data.DummyData;
 using GetApp_Import.Domain;
 
@@ -14,6 +15,8 @@ namespace GetApp_Import.Services.ProviderService.Providers
 
         protected override IList<SaaSProduct> Map(string source)
         {
+            Console.WriteLine("Mapping products from Software Advisor File...");
+
             // Get a FileStream from the path (source)
             var file = this.GetFileFromSource(source);
 

@@ -30,11 +30,11 @@ namespace GetApp_Import.Domain
         public override string ToString()
         {
             var categories = this.Categories.Select(c => c.GetCategoryName());
-            string concatCategories = string.Join(",", categories);
+            string concatCategories = string.Join(", ", categories);
 
-            return $"Name: '{this.Name}'; " +
-                   $"Categories: '{concatCategories}'; " +
-                   $"Twitter: '{this.TwitterUser}'";
+            return $"Name: {this.Name}; " +
+                   $"Categories: {concatCategories}; " +
+                   $"Twitter: {this.TwitterUser}";
         }
     }
 }

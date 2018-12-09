@@ -1,6 +1,6 @@
 ﻿namespace GetApp_Import.Services.ProviderService.Providers
 {
-    public interface ISoftwareAdviceProvider : IProviderBase
+    public interface ICsvFileProvider : IProviderBase
     {
     }
 }

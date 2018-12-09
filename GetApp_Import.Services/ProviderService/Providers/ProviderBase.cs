@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using GetApp_Import.Domain;
+using GetApp_Import.Services.DataService;
 
 namespace GetApp_Import.Services.ProviderService.Providers
 {
@@ -18,10 +18,12 @@ namespace GetApp_Import.Services.ProviderService.Providers
 
         public IList<SaaSProduct> Products { get;  protected set; }
 
-        public void Import(string source)
+        public void Import(string source, IDataService dataService)
         {
             this.Products = this.Map(source);
-            this.PersistData();
+            this.PersistData(dataService);
+
+            Console.WriteLine("Import completed");
         }
 
         protected virtual StreamReader GetFileFromSource(string sourcePath)
@@ -31,11 +33,21 @@ namespace GetApp_Import.Services.ProviderService.Providers
             return reader;
         }
 
-        protected void PersistData()
+        protected void PersistData(IDataService dataService)
         {
-            foreach(var product in this.Products)
+            Console.WriteLine($"Importing products to database ({dataService.DataClientName})...");
+
+            foreach (var product in this.Products)
             {
-                Console.WriteLine("import " + product);
+                try
+                {
+                    dataService.Create(product);
+                    Console.WriteLine("Import " + product);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"There was a problem trying to import '{product.Name}' product. (ERROR: " + ex.Message + ")");
+                }
             }
         }
 

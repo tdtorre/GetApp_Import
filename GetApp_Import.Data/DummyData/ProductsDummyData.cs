@@ -56,5 +56,21 @@ namespace GetApp_Import.Data.DummyData
 
             return capterraProducts;
         }
+
+        public static List<SaaSProduct> GetCsvFileProducts()
+        {
+            var capterraProducts = new List<SaaSProduct>();
+            capterraProducts.Add(new SaaSProduct()
+            {
+                Id = 5,
+                Name = "GitLab",
+                Categories = new List<Category>() { Category.BugsAndIssueTracking, Category.DevelopmentTools },
+                TwitterUser = "@gitlab",
+                Source = "csvfile",
+                SourceType = SourceType.CsvFile
+            });
+
+            return capterraProducts;
+        }
     }
 }
