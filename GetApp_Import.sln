@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetApp_Import.Services", "G
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetApp_Import.Data", "GetApp_Import.Data\GetApp_Import.Data.csproj", "{E1053BEC-7DBD-4793-9AEB-389B5DADE888}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{0C8F8390-8C02-40AC-A1E7-84D34807E876}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetApp_Import.Services.Test", "GetApp_Import.Services.Test\GetApp_Import.Services.Test.csproj", "{284E33B4-8618-4ED1-9B8D-333D31F7BEFF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,9 +37,16 @@ Global
 		{E1053BEC-7DBD-4793-9AEB-389B5DADE888}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1053BEC-7DBD-4793-9AEB-389B5DADE888}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1053BEC-7DBD-4793-9AEB-389B5DADE888}.Release|Any CPU.Build.0 = Release|Any CPU
+		{284E33B4-8618-4ED1-9B8D-333D31F7BEFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{284E33B4-8618-4ED1-9B8D-333D31F7BEFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{284E33B4-8618-4ED1-9B8D-333D31F7BEFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{284E33B4-8618-4ED1-9B8D-333D31F7BEFF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{284E33B4-8618-4ED1-9B8D-333D31F7BEFF} = {0C8F8390-8C02-40AC-A1E7-84D34807E876}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3602EB21-FA88-409A-A9DE-AA99620E7BF6}

@@ -3,7 +3,7 @@ using GetApp_Import.Domain;
 
 namespace GetApp_Import.Services.DataService.DataClients
 {
-    public class MySqlClient : DataService
+    public class MySqlClient : DataService, IMySqlClient
     {
         public MySqlClient()
         {

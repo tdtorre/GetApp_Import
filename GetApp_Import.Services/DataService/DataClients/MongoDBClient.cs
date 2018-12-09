@@ -3,7 +3,7 @@ using GetApp_Import.Domain;
 
 namespace GetApp_Import.Services.DataService.DataClients
 {
-    public class MongoDBClient : DataService
+    public class MongoDBClient : DataService, IMongoDBClient
     {
         public MongoDBClient()
         {
