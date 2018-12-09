@@ -8,7 +8,7 @@ namespace GetApp_Import.Services.ProviderService.Providers
     {
         SourceType Source { get; set; }
 
-        List<SaaSProduct> Products { get; }
+        IList<SaaSProduct> Products { get; }
 
         void Import(string source, IDataService dataService);
     }
