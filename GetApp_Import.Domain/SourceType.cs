@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GetApp_Import.Services.Provider
+namespace GetApp_Import.Domain
 {
     public enum SourceType
     {

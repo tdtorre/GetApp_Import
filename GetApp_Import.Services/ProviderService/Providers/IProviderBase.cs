@@ -1,8 +1,9 @@
 ﻿using GetApp_Import.Domain;
 using System;
 using System.Collections.Generic;
+using System.IO;
 
-namespace GetApp_Import.Services.Provider
+namespace GetApp_Import.Services.ProviderService.Providers
 {
     public interface IProviderBase
     {
@@ -10,6 +11,6 @@ namespace GetApp_Import.Services.Provider
 
         IList<SaaSProduct> Products { get; }
 
-        void Import<T>(T source);
+        void Import(string source);
     }
 }

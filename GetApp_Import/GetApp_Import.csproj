@@ -5,4 +5,8 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\GetApp_Import.Services\GetApp_Import.Services.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\GetApp_Import.Data\GetApp_Import.Data.csproj" />
     <ProjectReference Include="..\GetApp_Import.Domain\GetApp_Import.Domain.csproj" />
   </ItemGroup>
 
