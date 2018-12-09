@@ -10,7 +10,7 @@ namespace GetApp_Import
     {
         static void Main(string[] args)
         {
-            if (args == null)
+            if (args == null || args.Length == 0)
             {
                 Console.WriteLine("Parameters are missing.");
             }
