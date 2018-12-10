@@ -11,6 +11,8 @@ namespace GetApp_Import.Services.DataService.DataClients
         {
             this.DataClientName = "MongoDB";
         }
+
+        /// <inheritdoc/>
         public override async Task<bool> Create(SaaSProduct product)
         {
             using (var mongoDbDataContext = new MongoDbDataContext())

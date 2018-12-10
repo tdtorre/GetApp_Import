@@ -11,6 +11,12 @@ namespace GetApp_Import.Services.ProviderService.Providers
 
         IList<SaaSProduct> Products { get; }
 
-        Task Import(string source, IDataService dataService);
+        /// <summary>
+        /// Import products from the file path to the database
+        /// </summary>
+        /// <param name="path">Feed File path</param>
+        /// <param name="dataService">Data base connection service</param>
+        /// <returns></returns>
+        Task Import(string path, IDataService dataService);
     }
 }

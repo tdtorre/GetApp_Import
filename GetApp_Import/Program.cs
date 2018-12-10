@@ -19,7 +19,10 @@ namespace GetApp_Import
                 try
                 {
                     var source = args[0];
-                    var path = args[1];
+                    var filename = args[1];
+
+                    string folder = Environment.GetEnvironmentVariable("feedFolder");
+                    var path = folder + "/" + filename;                    
 
                     // configure services
                     // in case that we want to use other DataService we only have to change the implementation

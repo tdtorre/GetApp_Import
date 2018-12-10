@@ -12,6 +12,7 @@ namespace GetApp_Import.Services.DataService.DataClients
             this.DataClientName = "MySQL";
         }
 
+        /// <inheritdoc/>
         public override async Task<bool> Create(SaaSProduct product)
         {
             var importerdProduct = product;

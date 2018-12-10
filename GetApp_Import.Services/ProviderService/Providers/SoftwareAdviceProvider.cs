@@ -14,12 +14,13 @@ namespace GetApp_Import.Services.ProviderService.Providers
             this.Source = SourceType.YamlFile;
         }
 
-        protected override async Task<IList<SaaSProduct>> Map(string source)
+        /// <inheritdoc/>
+        protected override async Task<IList<SaaSProduct>> Map(string path)
         {
             Console.WriteLine("Mapping products from Software Advisor File...");
 
             // Get a FileStream from the path (source)
-            var file = await this.GetFileFromSource(source);
+            var file = await this.GetFileFromSource(path);
 
             // Extract products from the YAML file stream using the proper mapping for Software Advisor Product
             // Close file stream

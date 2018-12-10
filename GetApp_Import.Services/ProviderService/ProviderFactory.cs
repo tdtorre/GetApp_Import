@@ -9,9 +9,9 @@ namespace GetApp_Import.Services.ProviderService
         private const string SoftwareAdviceProvider = "softwareadvice";
 
         /// <summary>
-        /// Get the proper provider based on the type
+        /// Get the proper Product Provider based on the type
         /// </summary>
-        /// <param name="providerType"></param>
+        /// <param name="providerType">Product Provider</param>
         /// <returns></returns>
         public static IProviderBase GetProvider(string providerType)
         {

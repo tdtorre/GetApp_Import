@@ -2,7 +2,10 @@
   "profiles": {
     "GetApp_Import": {
       "commandName": "Project",
-      "commandLineArgs": "\"capterra\" \"feed-products/capterra.yaml\" "
+      "commandLineArgs": "\"capterra\" \"capterra.yaml\" ",
+      "environmentVariables": {
+        "feedFolder": "/feed-products"
+      }
     }
   }
 }

@@ -19,24 +19,37 @@ namespace GetApp_Import.Services.ProviderService.Providers
 
         public IList<SaaSProduct> Products { get;  protected set; }
 
-        public async Task Import(string source, IDataService dataService)
+        /// <inheritdoc/>
+        public async Task Import(string path, IDataService dataService)
         {
-            this.Products = await this.Map(source);
+            Console.WriteLine($"Importing products from '{path}'");
+
+            this.Products = await this.Map(path);
             await this.PersistData(dataService);
 
             Console.WriteLine("Import completed");
         }
 
-        protected virtual Task<StreamReader> GetFileFromSource(string sourcePath)
+        /// <summary>
+        /// Get a Stream Reader based on the file path
+        /// </summary>
+        /// <param name="path">File path</param>
+        /// <returns></returns>
+        protected virtual Task<StreamReader> GetFileFromSource(string path)
         {
             //var reader = new StreamReader(sourcePath);
             var reader = StreamReader.Null;
             return Task.FromResult(reader);
         }
 
+        /// <summary>
+        /// Store the products loaded from the file to database
+        /// </summary>
+        /// <param name="dataService">Data base connection service</param>
+        /// <returns></returns>
         protected async Task PersistData(IDataService dataService)
         {
-            Console.WriteLine($"Importing products to database ({dataService.DataClientName})...");
+            Console.WriteLine($"Storing products to database ({dataService.DataClientName})...");
 
             foreach (var product in this.Products)
             {
@@ -52,6 +65,11 @@ namespace GetApp_Import.Services.ProviderService.Providers
             }
         }
 
-        protected abstract Task<IList<SaaSProduct>> Map(string source);
+        /// <summary>
+        /// Map all the products from the file to Products collection
+        /// </summary>
+        /// <param name="path">File path</param>
+        /// <returns></returns>
+        protected abstract Task<IList<SaaSProduct>> Map(string path);
     }
 }
