@@ -1,6 +1,7 @@
 ﻿using GetApp_Import.Domain;
 using GetApp_Import.Services.DataService;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace GetApp_Import.Services.ProviderService.Providers
 {
@@ -10,6 +11,6 @@ namespace GetApp_Import.Services.ProviderService.Providers
 
         IList<SaaSProduct> Products { get; }
 
-        void Import(string source, IDataService dataService);
+        Task Import(string source, IDataService dataService);
     }
 }

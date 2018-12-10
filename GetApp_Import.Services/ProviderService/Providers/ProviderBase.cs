@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using GetApp_Import.Domain;
 using GetApp_Import.Services.DataService;
 
@@ -18,22 +19,22 @@ namespace GetApp_Import.Services.ProviderService.Providers
 
         public IList<SaaSProduct> Products { get;  protected set; }
 
-        public void Import(string source, IDataService dataService)
+        public async Task Import(string source, IDataService dataService)
         {
-            this.Products = this.Map(source);
-            this.PersistData(dataService);
+            this.Products = await this.Map(source);
+            await this.PersistData(dataService);
 
             Console.WriteLine("Import completed");
         }
 
-        protected virtual StreamReader GetFileFromSource(string sourcePath)
+        protected virtual Task<StreamReader> GetFileFromSource(string sourcePath)
         {
             //var reader = new StreamReader(sourcePath);
             var reader = StreamReader.Null;
-            return reader;
+            return Task.FromResult(reader);
         }
 
-        protected void PersistData(IDataService dataService)
+        protected async Task PersistData(IDataService dataService)
         {
             Console.WriteLine($"Importing products to database ({dataService.DataClientName})...");
 
@@ -41,7 +42,7 @@ namespace GetApp_Import.Services.ProviderService.Providers
             {
                 try
                 {
-                    dataService.Create(product);
+                    await dataService.Create(product);
                     Console.WriteLine("Import " + product);
                 }
                 catch (Exception ex)
@@ -51,6 +52,6 @@ namespace GetApp_Import.Services.ProviderService.Providers
             }
         }
 
-        protected abstract IList<SaaSProduct> Map(string source);
+        protected abstract Task<IList<SaaSProduct>> Map(string source);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using GetApp_Import.Data.DummyData;
 using GetApp_Import.Domain;
 
@@ -13,15 +14,15 @@ namespace GetApp_Import.Services.ProviderService.Providers
             this.Source = SourceType.CsvFile;
         }
 
-        protected override IList<SaaSProduct> Map(string source)
+        protected override async Task<IList<SaaSProduct>> Map(string source)
         {
             Console.WriteLine("Mapping products from CSV File...");
 
             // Download and save the file from URL
-            var filePath = this.DownloadFileFromUrl(source);
+            var filePath = await this.DownloadFileFromUrl(source);
 
             // Get a FileStream from the path (source)
-            var file = this.GetFileFromSource(filePath);
+            var file = await this.GetFileFromSource(filePath);
 
             // Extract products from the CSV file stream using the proper mapping for this Product Provider
             // Close file stream
@@ -29,7 +30,7 @@ namespace GetApp_Import.Services.ProviderService.Providers
             return ProductsDummyData.GetCsvFileProducts();
         }
 
-        private string DownloadFileFromUrl(string url)
+        private async Task<string> DownloadFileFromUrl(string url)
         {
             return string.Empty;
         }

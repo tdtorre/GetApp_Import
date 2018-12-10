@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using GetApp_Import.Data.DummyData;
 using GetApp_Import.Domain;
 
@@ -13,12 +14,12 @@ namespace GetApp_Import.Services.ProviderService.Providers
             this.Source = SourceType.YamlFile;
         }
 
-        protected override IList<SaaSProduct> Map(string source)
+        protected override async Task<IList<SaaSProduct>> Map(string source)
         {
             Console.WriteLine("Mapping products from Capterra File...");
 
             // Get a FileStream from the path (source)
-            var file = this.GetFileFromSource(source);
+            var file = await this.GetFileFromSource(source);
 
             // Extract products from the YAML file stream using the proper mapping for Capterra Product
             // Close file stream

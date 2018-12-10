@@ -22,6 +22,7 @@ namespace GetApp_Import
                     var path = args[1];
 
                     // configure services
+                    // in case that we want to use other DataService we only have to change the implementation
                     var serviceCollection = new ServiceCollection().AddTransient<IDataService, MySqlClient>();
 
                     // create a service provider from the service collection
@@ -30,11 +31,13 @@ namespace GetApp_Import
                     // resolve the dependency
                     var dataService = serviceProvider.GetService<IDataService>();
 
-                    // get proper provider and execute product import
-                    var provider = ProviderFactory.GetProvider(source);
-                    provider.Import(path, dataService);
+                    ProductProcessor.Execute(source, path, dataService).Wait();
                 }
-                catch(Exception ex)
+                catch (ArgumentException aex)
+                {
+                    Console.WriteLine($"Caught ArgumentException: {aex.Message}");
+                }
+                catch (Exception ex)
                 {
                     Console.WriteLine("Error: " + ex.Message);
                 }

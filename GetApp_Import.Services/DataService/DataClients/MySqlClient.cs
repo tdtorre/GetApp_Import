@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Threading.Tasks;
+using GetApp_Import.Data;
 using GetApp_Import.Domain;
 
 namespace GetApp_Import.Services.DataService.DataClients
@@ -10,9 +12,17 @@ namespace GetApp_Import.Services.DataService.DataClients
             this.DataClientName = "MySQL";
         }
 
-        public override void Create(SaaSProduct product)
+        public override async Task Create(SaaSProduct product)
         {
             var importerdProduct = product;
+
+            using(var mySqlDataContext = new MySqlDataContext())
+            {
+                // Do things...
+            }
+
+            // Adding this delay to simulate the database interaction
+            await Task.Delay(2000);
         }
     }
 }

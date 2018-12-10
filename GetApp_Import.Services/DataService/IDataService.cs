@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace GetApp_Import.Services.DataService
 {
@@ -9,6 +10,6 @@ namespace GetApp_Import.Services.DataService
     {
         string DataClientName { get; set; }
 
-        void Create(SaaSProduct product);
+        Task Create(SaaSProduct product);
     }
 }

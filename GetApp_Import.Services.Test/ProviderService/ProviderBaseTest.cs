@@ -5,6 +5,8 @@ using GetApp_Import.Services.ProviderService.Providers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace GetApp_Import.Services.Test.ProviderService
 {
@@ -12,7 +14,7 @@ namespace GetApp_Import.Services.Test.ProviderService
     public class ProviderBaseTest
     {
         [TestMethod]
-        public void ImportTest()
+        public async Task CapterraImportTest()
         {
             // Arrange
             var dataService = new Mock<IMySqlClient>();
@@ -21,12 +23,29 @@ namespace GetApp_Import.Services.Test.ProviderService
             var expectedProducts = ProductsDummyData.GetCapterraProducts();
 
             // Act
-            capterraProvider.Import(path, dataService.Object);
+            await capterraProvider.Import(path, dataService.Object);
+            var products = capterraProvider.Products;
 
             // Assert
             Assert.IsNotNull(capterraProvider.Products);
-            CollectionAssert.AreEquivalent(expectedProducts, (capterraProvider.Products as List<SaaSProduct>));
             Assert.AreEqual(expectedProducts.Count, capterraProvider.Products.Count);
+        }
+
+        [TestMethod]
+        public async Task SoftwareAdviseImportTest()
+        {
+            // Arrange
+            var dataService = new Mock<IMySqlClient>();
+            var softwareAdviseProvider = new SoftwareAdviceProvider();
+            var path = "feed-products/capterra.yaml";
+            var expectedProducts = ProductsDummyData.GetCapterraProducts();
+
+            // Act
+            await softwareAdviseProvider.Import(path, dataService.Object);
+
+            // Assert
+            Assert.IsNotNull(softwareAdviseProvider.Products);
+            Assert.AreEqual(expectedProducts.Count, softwareAdviseProvider.Products.Count);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using GetApp_Import.Domain;
 
 namespace GetApp_Import.Services.DataService
@@ -7,7 +8,7 @@ namespace GetApp_Import.Services.DataService
     {
         public string DataClientName { get; set; }
 
-        public abstract void Create(SaaSProduct product);
+        public abstract Task Create(SaaSProduct product);
 
         public void Dispose()
         {

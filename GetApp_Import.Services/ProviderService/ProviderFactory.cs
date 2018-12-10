@@ -1,7 +1,5 @@
 ﻿using GetApp_Import.Services.ProviderService.Providers;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace GetApp_Import.Services.ProviderService
 {
@@ -10,6 +8,11 @@ namespace GetApp_Import.Services.ProviderService
         private const string CapterraProvider = "capterra";
         private const string SoftwareAdviceProvider = "softwareadvice";
 
+        /// <summary>
+        /// Get the proper provider based on the type
+        /// </summary>
+        /// <param name="providerType"></param>
+        /// <returns></returns>
         public static IProviderBase GetProvider(string providerType)
         {
             switch (providerType.ToLower())
