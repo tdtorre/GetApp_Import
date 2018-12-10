@@ -3,6 +3,9 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <Authors>Toni de la Torre</Authors>
+    <Product>GetApp Import</Product>
+    <Description>Small application to import Products from external files (YAML/CSV) to database.</Description>
   </PropertyGroup>
 
   <ItemGroup>
