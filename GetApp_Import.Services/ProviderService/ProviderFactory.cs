@@ -7,6 +7,7 @@ namespace GetApp_Import.Services.ProviderService
     {
         private const string CapterraProvider = "capterra";
         private const string SoftwareAdviceProvider = "softwareadvice";
+        private const string CsvFileProvider = "csvfile";
 
         /// <summary>
         /// Get the proper Product Provider based on the type
@@ -20,7 +21,9 @@ namespace GetApp_Import.Services.ProviderService
                 case CapterraProvider:
                     return new CapterraProvider();
                 case SoftwareAdviceProvider:
-                    return new CapterraProvider();
+                    return new SoftwareAdviceProvider();
+                case CsvFileProvider:
+                    return new CsvFileProvider();
                 default:
                     throw new Exception("Provider not implemented");
             }

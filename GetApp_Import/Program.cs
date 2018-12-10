@@ -1,6 +1,5 @@
 ﻿using GetApp_Import.Services.DataService;
 using GetApp_Import.Services.DataService.DataClients;
-using GetApp_Import.Services.ProviderService;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 
@@ -19,10 +18,7 @@ namespace GetApp_Import
                 try
                 {
                     var source = args[0];
-                    var filename = args[1];
-
-                    string folder = Environment.GetEnvironmentVariable("feedFolder");
-                    var path = folder + "/" + filename;                    
+                    var filePath = args[1];                   
 
                     // configure services
                     // in case that we want to use other DataService we only have to change the implementation
@@ -34,11 +30,11 @@ namespace GetApp_Import
                     // resolve the dependency
                     var dataService = serviceProvider.GetService<IDataService>();
 
-                    ProductProcessor.Execute(source, path, dataService).Wait();
+                    ProductProcessor.Execute(source, filePath, dataService).Wait();
                 }
                 catch (ArgumentException aex)
                 {
-                    Console.WriteLine($"Caught ArgumentException: {aex.Message}");
+                    Console.WriteLine($"ArgumentException Error: {aex.Message}");
                 }
                 catch (Exception ex)
                 {
@@ -46,7 +42,7 @@ namespace GetApp_Import
                 }
             }
 
-            Console.ReadLine();
+            Console.ReadKey();
         }
     }
 }
