@@ -1,10 +1,7 @@
-﻿using GetApp_Import.Data.DummyData;
-using GetApp_Import.Domain;
+﻿using GetApp_Import.Domain;
 using GetApp_Import.Services.DataService.DataClients;
-using GetApp_Import.Services.ProviderService.Providers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace GetApp_Import.Services.Test.DataService
 {
@@ -12,7 +9,7 @@ namespace GetApp_Import.Services.Test.DataService
     public class DataServiceTest
     {
         [TestMethod]
-        public void MySqlClientCreateTest()
+        public async Task MySqlClientCreateTest()
         {
             // Arrange
             var saasProduct = new SaaSProduct()
@@ -23,10 +20,10 @@ namespace GetApp_Import.Services.Test.DataService
 
             // Act
             var dataService = new MySqlClient();
-            dataService.Create(saasProduct);
+            var result = await dataService.Create(saasProduct);
 
             // Assert
-            
+            Assert.Equals(result, true);
         }
     }
 }

@@ -12,7 +12,7 @@ namespace GetApp_Import.Services.DataService.DataClients
             this.DataClientName = "MySQL";
         }
 
-        public override async Task Create(SaaSProduct product)
+        public override async Task<bool> Create(SaaSProduct product)
         {
             var importerdProduct = product;
 
@@ -23,6 +23,9 @@ namespace GetApp_Import.Services.DataService.DataClients
 
             // Adding this delay to simulate the database interaction
             await Task.Delay(2000);
+
+            // We asume that the result is ok
+            return true;
         }
     }
 }

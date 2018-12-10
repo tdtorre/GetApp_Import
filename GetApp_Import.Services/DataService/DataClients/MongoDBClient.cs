@@ -11,7 +11,7 @@ namespace GetApp_Import.Services.DataService.DataClients
         {
             this.DataClientName = "MongoDB";
         }
-        public override async Task Create(SaaSProduct product)
+        public override async Task<bool> Create(SaaSProduct product)
         {
             using (var mongoDbDataContext = new MongoDbDataContext())
             {
@@ -19,6 +19,8 @@ namespace GetApp_Import.Services.DataService.DataClients
             }
 
             throw new NotImplementedException();
+
+            return false;
         }
     }
 }

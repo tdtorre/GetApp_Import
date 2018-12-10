@@ -8,7 +8,7 @@ namespace GetApp_Import.Services.DataService
     {
         public string DataClientName { get; set; }
 
-        public abstract Task Create(SaaSProduct product);
+        public abstract Task<bool> Create(SaaSProduct product);
 
         public void Dispose()
         {

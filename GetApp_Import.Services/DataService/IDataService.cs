@@ -10,6 +10,6 @@ namespace GetApp_Import.Services.DataService
     {
         string DataClientName { get; set; }
 
-        Task Create(SaaSProduct product);
+        Task<bool> Create(SaaSProduct product);
     }
 }
